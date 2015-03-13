@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Lolbot by andreyviktorov</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/andreyviktorov/lolbot">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/andreyviktorov/lolbot/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/andreyviktorov/lolbot/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Lolbot</h1>
+          <p>Чат-бот для ВКонтакте</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/andreyviktorov">andreyviktorov</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="lolbot" class="anchor" href="#lolbot" aria-hidden="true"><span class="octicon octicon-link"></span></a>LOLBOT</h1>
+
+<p>Чат-бот для ВКонтакте</p>
+
+<p><strong>ВНИМАНИЕ:</strong></p>
+
+<p>Для работы бота необходим Python версии 2.7.x, с версией 3 бот <strong>не работает</strong></p>
+
+<p>Бот был написан с целью поближе изучить python, код местами может быть ужасающим</p>
+
+<p>Разработкой бота я больше не занимаюсь, но с радостью приму ваши pull-request'ы и новые плагины</p>
+
+<p>Работоспособность проверена исключительно на ОС семейства Linux, на Windows/Mac работоспособность не гарантируется (но не исключается)</p>
+
+<h2>
+<a id="Начальная-настройка" class="anchor" href="#%D0%9D%D0%B0%D1%87%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F-%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>Начальная настройка</h2>
+
+<ol>
+<li>Установить модуль vk_api: <code>pip install vk_api</code>
+</li>
+<li>В файле <code>lolbot.py</code> заменить на 22 строке <code>login</code> и <code>password</code> на логин и пароль соответственно</li>
+<li>Запустить: <code>python lolbot.py</code>
+</li>
+</ol>
+
+<h2>
+<a id="Смена-префиксов" class="anchor" href="#%D0%A1%D0%BC%D0%B5%D0%BD%D0%B0-%D0%BF%D1%80%D0%B5%D1%84%D0%B8%D0%BA%D1%81%D0%BE%D0%B2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Смена префиксов</h2>
+
+<p>По умолчанию бот отзывается на пять префиксов: <code>lolbot</code>, <code>лолбот</code>, <code>лб</code>, <code>чб</code>, <code>кб</code></p>
+
+<p>Сменить их можно в <code>lolbot.py</code> на строке 75</p>
+
+<h2>
+<a id="Плагины" class="anchor" href="#%D0%9F%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D1%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>Плагины</h2>
+
+<ul>
+<li>Приветствие</li>
+<li>Список плагинов</li>
+<li>Музыка</li>
+<li>Случайное число</li>
+<li>Случайные сиськи :3 (берутся из первого попавшегося паблика по соответствующему запросу в вк)</li>
+</ul>
+
+<h2>
+<a id="Создание-плагинов" class="anchor" href="#%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D0%BE%D0%B2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Создание плагинов</h2>
+
+<p>В папке plugins лежит пример плагина под именем example.py, отвечающий строкой на команду <code>лб примерплагина</code></p>
+
+<p>Каждый плагин обязательно должен иметь три метода:</p>
+
+<ol>
+<li>Конструктор (ему передается экземпляр vk_api)</li>
+<li>
+<code>getkeys</code>, возвращающий слова-триггеры для вызова плагина</li>
+<li>
+<code>call</code>, вызываемый по слову-триггеру из getkeys</li>
+</ol>
+
+<p>Плагины размещаются в папке <code>plugins</code>. В случае наличия одинакового триггера в двух плагинах, будет использоваться последний загруженный</p>
+
+<p>Плагины могут работать со всеми методами API вконтакте</p>
+
+<h2>
+<a id="Лицензия" class="anchor" href="#%D0%9B%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>Лицензия</h2>
+
+<p>Код распространяется под лицензией <a href="https://ru.wikipedia.org/wiki/WTFPL">WTFPL</a> (Do What The Fuck You Want To Public License) версии 2</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-60718581-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
