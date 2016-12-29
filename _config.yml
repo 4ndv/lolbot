@@ -1,0 +1,8 @@
+title: Lolbot
+description: Чат-бот для ВКонтакте
+google_analytics: UA-60718581-1
+show_downloads: true
+theme: jekyll-theme-hacker
+
+gems:
+  - jekyll-mentions
